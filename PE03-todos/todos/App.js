@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, ScrollView, StyleSheet } from 'react-native'
+import { View, ScrollView, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 import Heading from './Heading'
 import Input from './Input'
@@ -58,7 +58,14 @@ class App extends Component {
   }
 
   render() {
-    const { inputValue, todos } = this.state
+    const { inputValue, todos, type } = this.state;
+    const filteredTodos =
+      type === 'All'
+        ? todos
+        : type === 'Complete'
+        ? todos.filter((todo) => todo.complete)
+        : todos.filter((todo) => !todo.complete);
+        
     return (
       <View style={styles.container}>
         <ScrollView
@@ -68,11 +75,23 @@ class App extends Component {
           <Input 
             inputValue={inputValue} 
             inputChange={(text) => this.inputChange(text)} />
+
           <TodoList toggleComplete={this.toggleComplete}
                     deleteTodo={this.deleteTodo}
                     todos={todos} />
           <Button submitTodo={this.submitTodo} />
         </ScrollView>
+        <View style={styles.tabBar}>
+          <TouchableOpacity onPress={() => this.setState({ type: 'All' })}>
+            <Text style={type === 'All' ? styles.activeTab : styles.tab}>All</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this.setState({ type: 'Active' })}>
+            <Text style={type === 'Active' ? styles.activeTab : styles.tab}>Active</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => this.setState({ type: 'Complete' })}>
+            <Text style={type === 'Complete' ? styles.activeTab : styles.tab}>Complete</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     )
   }
@@ -86,7 +105,21 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     paddingTop: 60
-  }
-})
+  },
+  tabBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    borderTopWidth: 1,
+    borderColor: '#e7e7e7',
+    padding: 20,
+  },
+  tab: {
+    color: 'black',
+  },
+  activeTab: {
+    color: 'blue',
+  },
+});
 
 export default App
