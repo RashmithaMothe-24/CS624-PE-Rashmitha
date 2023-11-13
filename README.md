@@ -24,6 +24,18 @@ The app responds to user interactions by dynamically updating the list of to-do 
 To-do items can be added, marked as done, or deleted as a result of user interactions.
 The input includes user actions and interactions with the app's interface, while the output describes how the app responds to those interactions, displaying and updating the list of to-do items accordingly.
 
+# CS624-PE04-RASHMITHA
+Input:
+The data array (data) holds information about each profile, including image, name, occupation, description, and showThumbnail.
+The handleProfileCardPress function handles the input when a profile card is pressed.
+Process:
+The render method in the App component processes the data by mapping over it and creating instances of the ProfileCard component for each profile.
+The ProfileCard component processes the input data and handles the onPress event.
+Output:
+The ProfileCard component produces an output by rendering a styled card for each profile, including the profile image, name, occupation, and description.
+The layout is organized into rows using the View and StyleSheet components.
+The output is displayed on the screen when the React Native application is run.
+
 
 
 
