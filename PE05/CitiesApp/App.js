@@ -9,12 +9,16 @@ LogBox.ignoreLogs([
 
 import Cities from './src/Cities/Cities'
 import AddCity from './src/AddCity/AddCity'
+import Countries from './src/Countries/Countries'
+import AddCountry from './src/AddCountry/AddCountry'
+
 
 const Tab = createBottomTabNavigator();
 
 export default class App extends Component {
   state = {
-    cities: []
+    cities: [],
+    countries: []
   }
 
   addCity = (city) => {
@@ -23,12 +27,20 @@ export default class App extends Component {
     this.setState({ cities })
   }
 
+  addCountry = (country) => {
+    const countries = this.state.countries
+    countries.push(country)
+    this.setState({ countries })
+  }
+
   render() {
     return (
       <NavigationContainer>
         <Tab.Navigator>
           <Tab.Screen name="Cities"  initialParams={{cities: this.state.cities, addCity: this.addCity}} component={Cities} />
           <Tab.Screen name="AddCity" initialParams={{cities: this.state.cities, addCity: this.addCity}} component={AddCity} />
+          <Tab.Screen name="Countries"  initialParams={{countries: this.state.countries, addCountry: this.addCountry}} component={Countries} />
+          <Tab.Screen name="AddCountry" initialParams={{countries: this.state.countries, addCountry: this.addCountry}} component={AddCountry} />
         </Tab.Navigator>
       </NavigationContainer>
     );
