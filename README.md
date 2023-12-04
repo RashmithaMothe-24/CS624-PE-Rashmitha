@@ -36,6 +36,12 @@ The ProfileCard component produces an output by rendering a styled card for each
 The layout is organized into rows using the View and StyleSheet components.
 The output is displayed on the screen when the React Native application is run.
 
+# CS624-PE06-RASHMITHA
+The React Native application follows an Input-Output-Process model, where user interactions serve as input. The user interacts with the app through UI components, triggering navigation actions and state changes. The React Navigation library manages the navigation flow, utilizing bottom tab and stack navigators for screen transitions. State is dynamically updated using the useState hook, with functions like addCity and addCountry. The UI components, such as TouchableOpacity and Text, form the output by rendering screens and allowing users to perform actions. Additionally, the application dynamically adjusts header options through navigation.setOptions. This model captures the essence of the app's functionality, emphasizing user interaction, navigation, and state management.
+
+
+
+
 
 
 
