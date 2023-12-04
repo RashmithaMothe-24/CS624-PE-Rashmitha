@@ -1,5 +1,3 @@
-// Listing 6.7 Cities route (functionality)
-// Listing 6.8 Cities route (styling)
 import React from 'react'
 import { View, Text, StyleSheet, TouchableWithoutFeedback, ScrollView } from 'react-native'
 import CenterMessage from '../components/CenterMessage'

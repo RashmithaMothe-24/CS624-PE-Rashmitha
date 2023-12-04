@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 import uuidV4 from 'uuid/v4'
@@ -9,26 +8,18 @@ class AddCountry extends React.Component {
     country: '',
     currency: ''
   }
-
   onChangeText = (key, value) => {
     this.setState({ [key]: value })
   }
-
   submit = () => {
-    if (this.state.country === '' || this.state.currency === '') {
-      alert('Please complete the form')
-      return
-    }
-
+    if (this.state.country === '' || this.state.currency === '') alert('please complete form')
     const country = {
       country: this.state.country,
       currency: this.state.currency,
       id: uuidV4(),
-      locations: []
+      values: []
     }
-
     this.props.route.params.addCountry(country)
-
     this.setState({
       country: '',
       currency: ''
@@ -36,12 +27,10 @@ class AddCountry extends React.Component {
       this.props.navigation.navigate('Countries')
     })
   }
-
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.heading}>Countries</Text>
-        
         <TextInput
           placeholder='Country name'
           onChangeText={val => this.onChangeText('country', val)}
